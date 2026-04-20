@@ -68,7 +68,7 @@ async function flushToBackend() {
   }
 
   try {
-    const response = await fetch('http://localhost:3000/api/usage', {
+    const response = await fetch('https://trimsub-xdbg.vercel.app/api/usage', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(usageStats)
