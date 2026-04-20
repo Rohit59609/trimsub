@@ -1,8 +1,8 @@
-# SubTracks - AI-Powered Subscription Manager 🚀
+# SubTracks - AI-Powered Subscription Manager 
 
 SubTracks is an intelligent subscription management platform designed to help users automatically track, analyze, and optimize their online subscriptions using a modern Next.js web dashboard and a real-time Chrome Extension.
 
-## 🌟 Features
+##  Features
 
 - **Chrome Extension Tracker**: Automatically detects and syncs active subscriptions seamlessly while you browse.
 - **Unified Dashboard**: View all your subscriptions, usage data, and monthly spend analytics in one beautiful, centralized interface.
@@ -16,7 +16,7 @@ SubTracks is an intelligent subscription management platform designed to help us
 - **Browser Integration**: Chrome Extension API (Manifest V3)
 - **Language**: TypeScript / JavaScript
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### 1. Running the Web App (Dashboard)
 1. Open your terminal and navigate to the web app directory:
