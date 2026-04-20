@@ -6,7 +6,7 @@ import SpendingChart from '@/components/SpendingChart';
 import UsageChart from '@/components/UsageChart';
 import SubscriptionList from '@/components/SubscriptionList';
 import { MOCK_SUBSCRIPTIONS, MOCK_TRANSACTIONS } from '@/data/mock';
-import { Wallet, TrendingDown, ShieldAlert, Sparkles, Plus, X, Loader2 } from 'lucide-react';
+import { Wallet, TrendingDown, ShieldAlert, Sparkles, Plus, X, Loader2, Minus, LayoutDashboard, CreditCard, ArrowRightLeft, Bell } from 'lucide-react';
 
 function generateChartData(subs: typeof MOCK_SUBSCRIPTIONS, range: string) {
   const activeSubs = subs.filter(s => s.status === 'active');
@@ -42,6 +42,13 @@ export default function Home() {
   const [subscriptions, setSubscriptions] = useState(MOCK_SUBSCRIPTIONS);
   const [chartData, setChartData] = useState<{ month: string; spend: number }[]>([]);
   const [timeRange, setTimeRange] = useState('6months');
+
+  const navItems = [
+    { id: 'dashboard', label: 'Home', icon: LayoutDashboard },
+    { id: 'subscriptions', label: 'Subs', icon: CreditCard },
+    { id: 'transactions', label: 'Txns', icon: ArrowRightLeft },
+    { id: 'alerts', label: 'Alerts', icon: Bell, badge: true },
+  ];
 
   // Modals state
   const [isBankModalOpen, setBankModalOpen] = useState(false);
@@ -213,28 +220,41 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen bg-background text-foreground relative">
+    <div className="flex min-h-screen bg-background text-foreground relative pb-20 md:pb-0">
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       
-      <main className="flex-1 md:ml-64 p-6 md:p-10 lg:p-12 max-w-7xl">
+      {/* Mobile Top Header */}
+      <div className="md:hidden flex items-center justify-between p-4 border-b border-card-border glass-panel sticky top-0 z-20">
+        <h1 className="text-xl font-bold flex items-center gap-2">
+          <div className="w-8 h-8 rounded-lg bg-accent-primary flex items-center justify-center text-background">
+            <Minus size={20} />
+          </div>
+          SubTracks
+        </h1>
+        <div className="w-8 h-8 rounded-full bg-card-border overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=150&q=80" alt="Avatar" className="object-cover w-full h-full" />
+        </div>
+      </div>
+
+      <main className="flex-1 md:ml-64 p-4 md:p-10 lg:p-12 max-w-7xl">
         {activeTab === 'dashboard' ? (
           <>
-            <header className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
+            <header className="flex flex-col md:flex-row md:items-center justify-between mb-6 md:mb-10 gap-4">
               <div>
-                <h2 className="text-3xl font-bold tracking-tight">Overview</h2>
-                <p className="text-foreground/60 mt-1">Here's your subscription breakdown this month.</p>
+                <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Overview</h2>
+                <p className="text-foreground/60 mt-1 text-sm md:text-base">Here's your subscription breakdown this month.</p>
               </div>
               
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 w-full md:w-auto">
                 <button 
                   onClick={() => setAddModalOpen(true)}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-card-border hover:bg-card-border/30 transition-colors font-medium">
+                  className="flex-1 md:flex-none flex justify-center items-center gap-2 px-4 py-2.5 rounded-xl border border-card-border hover:bg-card-border/30 transition-colors font-medium">
                   <Plus size={18} />
-                  Add Manual
+                  Add
                 </button>
                 <button 
                   onClick={() => setBankModalOpen(true)}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-foreground text-background hover:bg-foreground/90 transition-colors font-medium shadow-lg hover-lift">
+                  className="flex-[2] md:flex-none flex justify-center items-center gap-2 px-5 py-2.5 rounded-xl bg-foreground text-background hover:bg-foreground/90 transition-colors font-medium shadow-lg hover-lift">
                   <Sparkles size={18} className="text-accent-primary" />
                   Connect Bank
                 </button>
@@ -317,7 +337,7 @@ export default function Home() {
                 <div>
                   <h3 className="text-xl font-bold mb-1">Trim the Fat</h3>
                   <p className="text-foreground/70 text-sm leading-relaxed max-w-xl">
-                    We found <strong>{highRiskCount} subscriptions</strong> you barely used last month (under 6 hours). Cancel them now to instantly save <span className="text-accent-primary font-bold">₹{potentialSavings.toFixed(2)}</span> this month.
+                    We found <strong>{highRiskCount} subscriptions</strong> you barely used last month (under 6 hours). Cancel them now to instantly save <span className="text-accent-primary font-bold">₹{potentialSavings.toFixed(2)}</span>.
                   </p>
                 </div>
               </div>
@@ -333,17 +353,17 @@ export default function Home() {
           </>
         ) : activeTab === 'subscriptions' ? (
           <div>
-            <header className="mb-10">
-              <h2 className="text-3xl font-bold tracking-tight">All Subscriptions</h2>
-              <p className="text-foreground/60 mt-1">Manage and track all your active and cancelled subscriptions.</p>
+            <header className="mb-6 md:mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight">All Subscriptions</h2>
+              <p className="text-foreground/60 mt-1 text-sm md:text-base">Manage and track all your active and cancelled subscriptions.</p>
             </header>
             <SubscriptionList subscriptions={subscriptions} onCancel={(id) => setTargetCancelId(id)} onEdit={openEditModal} />
           </div>
         ) : activeTab === 'transactions' ? (
           <div>
-            <header className="mb-10">
-              <h2 className="text-3xl font-bold tracking-tight">Recent Transactions</h2>
-              <p className="text-foreground/60 mt-1">Your latest bank transactions analyzed by SubTracks.</p>
+            <header className="mb-6 md:mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Recent Transactions</h2>
+              <p className="text-foreground/60 mt-1 text-sm md:text-base">Your latest bank transactions analyzed by SubTracks.</p>
             </header>
             <div className="glass-panel rounded-2xl overflow-hidden">
               <table className="w-full text-left border-collapse">
@@ -368,9 +388,9 @@ export default function Home() {
           </div>
         ) : activeTab === 'alerts' ? (
           <div>
-            <header className="mb-10">
-              <h2 className="text-3xl font-bold tracking-tight">System Alerts</h2>
-              <p className="text-foreground/60 mt-1">Notifications and warnings about your spending.</p>
+            <header className="mb-6 md:mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight">System Alerts</h2>
+              <p className="text-foreground/60 mt-1 text-sm md:text-base">Notifications and warnings about your spending.</p>
             </header>
             <div className="space-y-4">
               {subscriptions.filter(s => s.riskLevel === 'high' && s.status === 'active').map(sub => (
@@ -404,6 +424,29 @@ export default function Home() {
           </div>
         ) : null}
       </main>
+
+      {/* Mobile Bottom Navigation */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 glass-panel border-t border-card-border z-40 flex justify-around p-2 pb-safe bg-background/95 backdrop-blur-md">
+        {navItems.map((item) => {
+          const Icon = item.icon;
+          const isActive = activeTab === item.id;
+          return (
+            <button
+              key={item.id}
+              onClick={() => setActiveTab(item.id)}
+              className={`flex flex-col items-center gap-1 p-2 rounded-lg transition-colors flex-1 ${
+                isActive ? 'text-accent-primary' : 'text-foreground/50 hover:text-foreground'
+              }`}
+            >
+              <div className="relative">
+                <Icon size={20} />
+                {item.badge && <span className="absolute -top-1 -right-1 w-2 h-2 bg-accent-danger rounded-full border border-background"></span>}
+              </div>
+              <span className="text-[10px] font-medium">{item.label}</span>
+            </button>
+          );
+        })}
+      </nav>
 
       {/* Modals Layer */}
       {isBankModalOpen && (

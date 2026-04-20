@@ -26,8 +26,8 @@ export default function SubscriptionList({ subscriptions, onCancel, onEdit }: Su
             <tr className="border-b border-card-border bg-card-border/10 text-foreground/60 text-sm">
               <th className="p-4 font-medium">Service</th>
               <th className="p-4 font-medium">Cost</th>
-              <th className="p-4 font-medium">Next Billing</th>
-              <th className="p-4 font-medium">Risk / Utility</th>
+              <th className="p-4 font-medium hidden md:table-cell">Next Billing</th>
+              <th className="p-4 font-medium hidden sm:table-cell">Risk / Utility</th>
               <th className="p-4 font-medium text-right">Action</th>
             </tr>
           </thead>
@@ -53,10 +53,10 @@ export default function SubscriptionList({ subscriptions, onCancel, onEdit }: Su
                   <td className="p-4 font-medium">
                     ₹{sub.cost.toFixed(2)}<span className="text-xs text-foreground/50 font-normal">/{sub.billingCycle === 'monthly' ? 'mo' : 'yr'}</span>
                   </td>
-                  <td className="p-4 text-sm text-foreground/70">
+                  <td className="p-4 text-sm text-foreground/70 hidden md:table-cell">
                     {isCancelled ? '-' : new Date(sub.nextBillingDate).toLocaleDateString('en-GB')}
                   </td>
-                  <td className="p-4">
+                  <td className="p-4 hidden sm:table-cell">
                     {isCancelled ? (
                       <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-foreground/10 text-foreground/60 text-xs font-medium border border-card-border">
                         <CheckCircle2 size={12} /> Cancelled
@@ -83,7 +83,7 @@ export default function SubscriptionList({ subscriptions, onCancel, onEdit }: Su
                     ) : (
                       <button 
                         onClick={() => onEdit && onEdit(sub.id)}
-                        className="px-4 py-2 text-sm font-medium rounded-lg border border-card-border hover:bg-card-border/30 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+                        className="px-4 py-2 text-sm font-medium rounded-lg border border-card-border hover:bg-card-border/30 transition-colors opacity-100 md:opacity-0 md:group-hover:opacity-100 focus:opacity-100">
                         Edit
                       </button>
                     )}
