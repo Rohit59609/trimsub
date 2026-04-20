@@ -1,6 +1,6 @@
-# TrimSub - AI-Powered Subscription Manager 🚀
+# SubTracks - AI-Powered Subscription Manager 🚀
 
-TrimSub is an intelligent subscription management platform designed to help users automatically track, analyze, and optimize their online subscriptions using a modern Next.js web dashboard and a real-time Chrome Extension.
+SubTracks is an intelligent subscription management platform designed to help users automatically track, analyze, and optimize their online subscriptions using a modern Next.js web dashboard and a real-time Chrome Extension.
 
 ## 🌟 Features
 
@@ -37,7 +37,7 @@ TrimSub is an intelligent subscription management platform designed to help user
 1. Open Google Chrome and navigate to `chrome://extensions/`.
 2. Enable **"Developer mode"** using the toggle in the top-right corner.
 3. Click **"Load unpacked"** and select the `trimsub-extension` folder from this repository.
-4. Pin the TrimSub extension to your toolbar. It is now active and ready to communicate with your local dashboard!
+4. Pin the SubTracks extension to your toolbar. It is now active and ready to communicate with your local dashboard!
 
 ## 📁 Repository Structure
 
@@ -45,4 +45,4 @@ TrimSub is an intelligent subscription management platform designed to help user
 - `/trimsub-extension`: The Chrome extension source code (popup UI, background service workers, and content scripts).
 
 ---
-*Built for Hackathon 3.0*
+

@@ -343,7 +343,7 @@ export default function Home() {
           <div>
             <header className="mb-10">
               <h2 className="text-3xl font-bold tracking-tight">Recent Transactions</h2>
-              <p className="text-foreground/60 mt-1">Your latest bank transactions analyzed by TrimSub.</p>
+              <p className="text-foreground/60 mt-1">Your latest bank transactions analyzed by SubTracks.</p>
             </header>
             <div className="glass-panel rounded-2xl overflow-hidden">
               <table className="w-full text-left border-collapse">

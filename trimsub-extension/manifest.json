@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "TrimSub Screen Time Tracker",
+  "name": "SubTracks Screen Time Tracker",
   "version": "1.0",
   "description": "Tracks time spent on subscription services to calculate utility score and detect zombies.",
   "permissions": ["tabs", "storage", "activeTab", "alarms"],

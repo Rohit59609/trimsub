@@ -1,6 +1,6 @@
 'use client';
 
-import { LayoutDashboard, CreditCard, Bell, Settings, PieChart, ArrowRightLeft } from 'lucide-react';
+import { LayoutDashboard, CreditCard, Bell, Settings, Minus, ArrowRightLeft } from 'lucide-react';
 
 interface SidebarProps {
   activeTab: string;
@@ -20,9 +20,9 @@ export default function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
       <div className="p-6">
         <h1 className="text-2xl font-bold flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-accent-primary flex items-center justify-center text-background">
-            <PieChart size={20} />
+            <Minus size={20} />
           </div>
-          TrimSub
+          SubTracks
         </h1>
       </div>
       
