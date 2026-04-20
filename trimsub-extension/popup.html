@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { width: 320px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: #050505; color: #f0f0f0; margin: 0; }
+    h3 { margin-top: 0; display: flex; align-items: center; gap: 8px; color: #00e59b; }
+    p { font-size: 13px; color: #aaa; margin-bottom: 15px; line-height: 1.4; }
+    .sub-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; }
+    .sub-name { font-size: 13px; font-weight: 500; }
+    .sub-input { width: 60px; padding: 5px; border-radius: 4px; border: 1px solid #333; background: #111; color: white; text-align: center; }
+    button { 
+      width: 100%; padding: 12px; margin-top: 15px; background: rgba(0, 229, 155, 0.1); 
+      border: 1px solid rgba(0, 229, 155, 0.3); border-radius: 8px; cursor: pointer; 
+      font-weight: bold; color: #00e59b; transition: all 0.2s;
+    }
+    button:hover { background: #00e59b; color: #050505; }
+    .footer { margin-top: 15px; font-size: 11px; text-align: center; color: #666; }
+  </style>
+</head>
+<body>
+  <h3>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+    TrimSub Tracker
+  </h3>
+  <p>Set simulated hours used (last month):</p>
+  
+  <div id="sub-list"></div>
+  
+  <button id="sim-sync">Sync to Dashboard</button>
+  
+  <div class="footer">Data syncs automatically with localhost:3000</div>
+  <script src="popup.js"></script>
+</body>
+</html>
