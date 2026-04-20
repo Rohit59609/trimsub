@@ -263,38 +263,38 @@ export default function Home() {
 
             {/* KPI Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-              <div className="glass-panel p-6 rounded-2xl hover-lift relative overflow-hidden">
-                <div className="absolute -right-4 -top-4 w-24 h-24 bg-accent-info/10 rounded-full blur-2xl"></div>
+              <div className="glass-panel p-6 rounded-2xl hover-lift hover-glow-primary relative overflow-hidden group">
+                <div className="absolute -right-4 -top-4 w-24 h-24 bg-accent-info/10 rounded-full blur-2xl group-hover:bg-accent-info/20 transition-colors"></div>
                 <div className="flex justify-between items-start mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-accent-info/10 flex items-center justify-center text-accent-info">
+                  <div className="w-12 h-12 rounded-xl bg-accent-info/10 flex items-center justify-center text-accent-info animate-float-slow">
                     <Wallet size={24} />
                   </div>
                 </div>
                 <p className="text-foreground/60 text-sm font-medium mb-1">Total Monthly Spend</p>
-                <h3 className="text-4xl font-bold tracking-tight">₹{totalMonthly.toFixed(2)}</h3>
+                <h3 className="text-4xl font-bold tracking-tight tabular-nums">₹{totalMonthly.toFixed(2)}</h3>
               </div>
 
-              <div className="glass-panel p-6 rounded-2xl hover-lift relative overflow-hidden border-accent-primary/30">
-                <div className="absolute -right-4 -top-4 w-24 h-24 bg-accent-primary/10 rounded-full blur-2xl"></div>
+              <div className="glass-panel p-6 rounded-2xl hover-lift hover-glow-primary relative overflow-hidden border-accent-primary/30 group">
+                <div className="absolute -right-4 -top-4 w-24 h-24 bg-accent-primary/10 rounded-full blur-2xl group-hover:bg-accent-primary/20 transition-colors"></div>
                 <div className="flex justify-between items-start mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-accent-primary/10 flex items-center justify-center text-accent-primary">
+                  <div className="w-12 h-12 rounded-xl bg-accent-primary/10 flex items-center justify-center text-accent-primary animate-float-medium">
                     <TrendingDown size={24} />
                   </div>
                 </div>
                 <p className="text-foreground/60 text-sm font-medium mb-1">Potential Savings</p>
-                <h3 className="text-4xl font-bold tracking-tight text-accent-primary">₹{potentialSavings.toFixed(2)}</h3>
+                <h3 className="text-4xl font-bold tracking-tight text-accent-primary tabular-nums">₹{potentialSavings.toFixed(2)}</h3>
               </div>
 
-              <div className="glass-panel p-6 rounded-2xl hover-lift relative overflow-hidden border-accent-danger/30">
-                <div className="absolute -right-4 -top-4 w-24 h-24 bg-accent-danger/10 rounded-full blur-2xl"></div>
+              <div className="glass-panel p-6 rounded-2xl hover-lift hover-glow-danger relative overflow-hidden border-accent-danger/30 group">
+                <div className="absolute -right-4 -top-4 w-24 h-24 bg-accent-danger/10 rounded-full blur-2xl group-hover:bg-accent-danger/20 transition-colors"></div>
                 <div className="flex justify-between items-start mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-accent-danger/10 flex items-center justify-center text-accent-danger">
+                  <div className="w-12 h-12 rounded-xl bg-accent-danger/10 flex items-center justify-center text-accent-danger animate-float-slow">
                     <ShieldAlert size={24} />
                   </div>
                 </div>
                 <p className="text-foreground/60 text-sm font-medium mb-1">Zombie Subscriptions</p>
                 <div className="flex items-baseline gap-2">
-                  <h3 className="text-4xl font-bold tracking-tight text-accent-danger">{highRiskCount}</h3>
+                  <h3 className="text-4xl font-bold tracking-tight text-accent-danger tabular-nums">{highRiskCount}</h3>
                   <span className="text-sm font-medium text-accent-danger/80">Action required</span>
                 </div>
               </div>
