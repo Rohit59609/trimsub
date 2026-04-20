@@ -104,7 +104,7 @@ export default function Home() {
         const timeSpentMs = usageData[sub.id];
         if (timeSpentMs !== undefined && sub.status === 'active') {
           const isHighRisk = timeSpentMs < 21600000; // 6 hours = 21,600,000 ms
-          const newRiskLevel = isHighRisk ? 'high' : 'low';
+          const newRiskLevel: 'high' | 'medium' | 'low' = isHighRisk ? 'high' : 'low';
           if (sub.riskLevel !== newRiskLevel) {
             hasChanges = true;
             return { ...sub, riskLevel: newRiskLevel };
