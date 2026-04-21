@@ -1,4 +1,4 @@
-# SubTracks - AI-Powered Subscription Manager 
+# SubTracks -  SUbscription Utility and Leakage Detector 
 
 SubTracks is an intelligent subscription management platform designed to help users automatically track, analyze, and optimize their online subscriptions using a modern Next.js web dashboard and a real-time Chrome Extension.
 
